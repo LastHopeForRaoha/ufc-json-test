@@ -1,9 +1,37 @@
+name: Python application
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas
+
+    - name: Run script
+      run: python app.py
 import pandas as pd
 
 # Define file paths
-fight_stats_path = "/workspaces/ufc-json-test/processed_fight_data.csv"
-main_dataset_path = "/workspaces/ufc-json-test/full_dataset_with_all_metrics.csv"
-output_path = "/workspaces/ufc-json-test/updated_full_dataset_with_metrics.csv"
+fight_stats_path = "processed_fight_data.csv"
+main_dataset_path = "full_dataset_with_all_metrics.csv"
+output_path = "updated_full_dataset_with_metrics.csv"
 
 # Load datasets
 print("Loading datasets...")
