@@ -1,4 +1,4 @@
-import pandas as pd
+pip install pandas
 
 # Define file paths
 fight_stats_path = "/workspaces/ufc-json-test/processed_fight_data.csv"
